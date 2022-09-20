@@ -6,23 +6,31 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Extensions.Polling;
+using Newtonsoft.Json.Linq;
 
 
 namespace Telegram_Bot
 //Name: DarkBot
 //User name: darken_bot
-//Token: 5616421719:AAH4G8GdQDIAgOQF1omme1WWP3m3izLhbwQ
+//
+//Available commands:
+//help - list of available commands
+//keyboard - show demo the demo keyboard
+//inline_keyboard - show demo the demo inline keyboard
 {
 
     class Program
     {
-        private static string token { get; set; } = "5616421719:AAH4G8GdQDIAgOQF1omme1WWP3m3izLhbwQ";
-        private static TelegramBotClient client = new TelegramBotClient(token);
-
-        private static int count = 0;
-        private static string[] arr = new string[6];
+        private const string TokenVariable = "DarkBotToken";
         static async Task Main(string[] args)
         {
+            var token = Environment.GetEnvironmentVariable(TokenVariable);
+            if(token == null)
+            {
+                return;
+            }
+            var client = new TelegramBotClient(token);
+
             CancellationTokenSource cts = new CancellationTokenSource();
             var receiverOptions = new ReceiverOptions
             {
@@ -75,6 +83,11 @@ namespace Telegram_Bot
                     case "Здарова" or "Здарово" or "Здорова" or "здарова" or "здарово" or "здорова" or "Доров" or "доров"
                     or "Дарова" or "дарова" or "Дорова" or "дорова":
                         result = "Здарова заебал!";
+                        break;
+                    case "/help":
+                        result = "Список команд пока пуст";
+                        break;
+                    default:
                         break;
                 }
                 return result;
