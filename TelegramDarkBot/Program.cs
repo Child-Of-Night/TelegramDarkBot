@@ -79,6 +79,11 @@ namespace Telegram_Bot
                     or "Дарова" or "дарова" or "Дорова" or "дорова":
                         result = "Здарова заебал!";
                         break;
+                    case "/help":
+                        result = "Список команд пока пуст";
+                        break;
+                    default:
+                        break;
                 }
                 return result;
             }
