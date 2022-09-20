@@ -12,6 +12,11 @@ using Newtonsoft.Json.Linq;
 namespace Telegram_Bot
 //Name: DarkBot
 //User name: darken_bot
+//
+//Available commands:
+//help - list of available commands
+//keyboard - show demo the demo keyboard
+//inline_keyboard - show demo the demo inline keyboard
 {
 
     class Program
